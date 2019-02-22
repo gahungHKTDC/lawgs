@@ -26,9 +26,9 @@
   "homepage": "https://github.com/mentum/lawgs",
   "dependencies": {
     "aws-sdk": "^2.1.8",
-    "extend": "^2.0.0",
+    "extend": "^3.0.2",
     "linq": "^3.0.4-beta",
     "q": "^1.1.2",
-    "rx": "^2.3.24"
+    "rx": "^4.1.0"
   }
 }
