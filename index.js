@@ -116,11 +116,13 @@ function CloudWatchLogger(logGroupName) {
 			settings = conf.settings;
 		}
 
-		AWS.config.region = settings.aws.region; // Region
-		AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+		AWS.config.update(settings.aws);
+		// AWS.config.region = settings.aws.region; // Region
+		let testingCred = new AWS.CognitoIdentityCredentials({
 			IdentityPoolId: settings.aws.IdentityPoolId,
 			RoleArn: settings.aws.RoleArn
 		});
+		//AWS.config.credentials = testingCred;
 
 		cw = new AWS.CloudWatchLogs();
 		initializeStream();
