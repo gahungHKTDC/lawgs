@@ -116,8 +116,13 @@ function CloudWatchLogger(logGroupName) {
 			settings = conf.settings;
 		}
 
-		AWS.config.update(settings.aws);
-		cw = new AWS.CloudWatchLogs({ apiVersion: '2015-01-28' });
+		AWS.config.region = settings.aws.region; // Region
+		AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+			IdentityPoolId: settings.aws.IdentityPoolId,
+			RoleArn: settings.aws.RoleArn
+		});
+
+		cw = new AWS.CloudWatchLogs();
 		initializeStream();
 	};
 
